@@ -1,7 +1,11 @@
+"use client"
 import Link from 'next/link'
 import MobileMenu from './mobile-menu'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation';
 export default function Header() {
+  const pathname = usePathname();
+  const hideButtons = pathname === '/signup' || pathname === '/signin';
   return (
     <header className="absolute w-full z-30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -27,19 +31,67 @@ export default function Header() {
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
+            <li>
+                <Link
+                  href="/"
+                  className="font-medium text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                 <span className='hover:border-b-2 border-greens-200'>Home</span>
+
+                </Link>
+              </li>
               <li>
                 <Link
-                  href="/signin"
-                  className="font-medium text-greens-100 hover:text-greens-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  href="/"
+                  className="font-medium text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Sign in
+                <span className='hover:border-b-2 border-greens-200'>More</span>
+
                 </Link>
               </li>
               <li>
-                <Link href="/signup" className="btn-sm text-white bg-greens-100 hover:bg-greens-300 ml-3">
-                  Sign up
+                <Link
+                  href="/"
+                  className="font-medium text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  <span className='hover:border-b-2 border-greens-200'>Works</span>
+
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/"
+                  className="font-medium text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                 <span className='hover:border-b-2 border-greens-200'>About</span>
+              
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="font-medium text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                 <span className='hover:border-b-2 border-greens-200'>Contact</span>
+                </Link>
+              </li>
+              {!hideButtons && (
+              <><li>
+                  
+                    <Link
+                      href="/signin"
+                      className="font-medium text-greens-100 hover:text-greens-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                    >
+                      Sign in
+                    </Link>
+                  </li><li>
+                    <Link href="/signup" className="btn-sm text-white bg-greens-100 hover:bg-greens-300 ml-3">
+                      Sign up
+                    </Link>
+                  </li></>
+            
+              )}
+              
             </ul>
           </nav>
 
